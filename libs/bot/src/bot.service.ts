@@ -6,11 +6,13 @@ export class BotService {
   public async searchUpcomingContests() {
     const url = `https://codeforces.com/api/contest.list`;
     const res = await axios.get(url);
+    const previousData = res;
 
     if (!res.data)
       return {
-        status: 'error',
-        message: 'No contests found! Try again with different query!',
+        status: 'success',
+        message: `Found contests!`,
+        data: previousData.data?.result,
       };
 
     return {

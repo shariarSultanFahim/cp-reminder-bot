@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { NecordModule } from 'necord';
 import { IntentsBitField } from 'discord.js';
 import { AppService } from './app.service';
-import { MovieService } from './movie/codeforces.service';
+import { MovieService } from './codeforces/codeforces.service';
 import { BotModule } from 'libs/bot/src';
 
 @Module({

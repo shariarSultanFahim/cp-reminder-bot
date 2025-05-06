@@ -31,7 +31,7 @@ export class MovieService {
       ?.filter((d: any) => d.phase === 'BEFORE') // Logically Filtering Data's
       .slice(0, 3) // Getting first 3 data
       .map((data: any): APIEmbed | JSONEncodable<APIEmbed> => {
-        console.log(data);
+        // console.log(data);
         return {
           title: `${data.name}`,
           description: `Contest ID: ${data.id}`,
