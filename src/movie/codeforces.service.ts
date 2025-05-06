@@ -28,22 +28,30 @@ export class MovieService {
     }
 
     const embeds: (APIEmbed | JSONEncodable<APIEmbed>)[] = constests.data
-      .slice(0, 3)
+      ?.filter((d: any) => d.phase === 'BEFORE') // Logically Filtering Data's
+      .slice(0, 3) // Getting first 3 data
       .map((data: any): APIEmbed | JSONEncodable<APIEmbed> => {
         console.log(data);
         return {
-          title: `Contest Name: ${data.name}`,
+          title: `${data.name}`,
           description: `Contest ID: ${data.id}`,
           url: `https://codeforces.com/contests/${data.id.toString()}`,
           color: 0x00ff00,
           fields: [
             {
-              name: 'Contest Start Time',
+              name: 'Start Time',
               value: new Date(data.startTimeSeconds * 1000).toString(), //this is in UNIX formate
               inline: true,
             },
             {
-              name: 'Contest Type',
+              name: 'Duration',
+              value: data?.durationSeconds
+                ? `${data?.durationSeconds / 3600} hrs`
+                : 'N/A',
+              inline: true,
+            },
+            {
+              name: 'Type',
               value: data.type,
               inline: true,
             },
