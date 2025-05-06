@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { Context, SlashCommand, SlashCommandContext } from 'necord';
-import { BotService } from '@app/bot';
 import {
   APIEmbed,
   // ButtonBuilder,
@@ -8,6 +7,7 @@ import {
   // ComponentType,
   JSONEncodable,
 } from 'discord.js';
+import { BotService } from 'libs/bot/src';
 
 @Injectable()
 export class MovieService {
