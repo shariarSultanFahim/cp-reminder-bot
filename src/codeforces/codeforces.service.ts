@@ -10,7 +10,7 @@ import {
 import { BotService } from 'libs/bot/src';
 
 @Injectable()
-export class MovieService {
+export class CodeforcesService {
   constructor(private readonly bot: BotService) {}
 
   @SlashCommand({
@@ -27,10 +27,8 @@ export class MovieService {
       });
     }
 
-    const embeds: (APIEmbed | JSONEncodable<APIEmbed>)[] = constests.data
-      ?.filter((d: any) => d.phase === 'BEFORE') // Logically Filtering Data's
-      .slice(0, 3) // Getting first 3 data
-      .map((data: any): APIEmbed | JSONEncodable<APIEmbed> => {
+    const embeds: (APIEmbed | JSONEncodable<APIEmbed>)[] = constests.data?.map(
+      (data: any): APIEmbed | JSONEncodable<APIEmbed> => {
         // console.log(data);
         return {
           title: `${data.name}`,
@@ -57,7 +55,8 @@ export class MovieService {
             },
           ],
         };
-      });
+      },
+    );
 
     return interaction.reply({
       content: constests.message,
